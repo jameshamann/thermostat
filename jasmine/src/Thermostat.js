@@ -2,10 +2,16 @@
 
 function Thermostat() {
   this._temperature = 20;
+  this.currTemp = this._temperature;
 }
 
 Thermostat.prototype = {
-  currTemp: function() {
-    return this._temperature;
+  checkTemp: function() {
+    return this.currTemp;
+
+  },
+
+  increaseTemp: function() {
+     this.currTemp++;
   }
 };
