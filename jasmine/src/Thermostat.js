@@ -55,5 +55,18 @@ Thermostat.prototype = {
 
   reset: function() {
     this.currTemp = 20;
+  },
+
+  energyCalculator: function() {
+    if (this.checkTemp() <18) {
+      return "green";
+  } else if (this.checkTemp() <25) {
+    return "yellow";
   }
+    return "red";
+  },
+
+  energyUsage: function() {
+    return this.energyCalculator();
+    }
 };

@@ -58,6 +58,27 @@ describe('reset button', function() {
   it('resets the temperature to 20 degrees', function() {
     thermostat.reset();
     expect(thermostat.checkTemp()).toEqual(20);
-  })
-})
+  });
+});
+
+describe('energy usage', function() {
+  it('displays green when temp is less than 18 degrees', function() {
+    for(let i = 0; i <3; i++) {
+      thermostat.decreaseTemp();
+    }
+    expect(thermostat.energyUsage()).toEqual("green");
+  });
+  it('displays yellow when temp is between 18 and 24 degrees', function() {
+    for(let i = 0; i <4; i++) {
+      thermostat.increaseTemp();
+    }
+    expect(thermostat.energyUsage()).toEqual("yellow");
+  });
+  it('displays green when temp is more than 24 degrees', function() {
+    for(let i = 0; i <5; i++) {
+      thermostat.increaseTemp();
+    }
+    expect(thermostat.energyUsage()).toEqual("red");
+  });
+});
 });
