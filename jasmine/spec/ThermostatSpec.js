@@ -29,4 +29,14 @@ describe('Thermostat', function() {
       expect(thermostat.checkTemp()).toEqual(19);
     });
   });
+
+  describe('Power saving mode', function(){
+
+    it('has a max temp of 25 when power saving mode is on', function (){
+      for(let i = 0; i < 5; i++) {
+        thermostat.increaseTemp();
+      }
+      expect(thermostat.checkTemp()).toEqual(25);
+    });
+  });
 });

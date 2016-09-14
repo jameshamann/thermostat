@@ -3,7 +3,8 @@
 function Thermostat() {
   this._temperature = 20;
   this.currTemp = this._temperature;
-  this.minTemp = 10;
+  this.MIN_TEMP = 10;
+  this.POWER_SAVE_MAX_TEMP = 25
 }
 
 Thermostat.prototype = {
@@ -14,12 +15,16 @@ Thermostat.prototype = {
 
   increaseTemp: function() {
      this.currTemp++;
-  },
+ },
 
   decreaseTemp: function() {
-    if(this.currTemp === 10) {
+    if(this.isMinTemp()) {
       return;
     }
-    this.currTemp--;
+    this.currTemp -- ;
+  },
+
+  isMinTemp: function() {
+    return this.currTemp === this.MIN_TEMP;
   }
 };
