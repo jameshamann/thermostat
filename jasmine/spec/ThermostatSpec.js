@@ -51,6 +51,13 @@ describe('Thermostat', function() {
       expect(thermostat.isPowerSaveOn()).toBe(false);
       thermostat.switchOnPowerSave();
       expect(thermostat.isPowerSaveOn()).toBe(true);
-});
+    });
   });
+
+describe('reset button', function() {
+  it('resets the temperature to 20 degrees', function() {
+    thermostat.reset();
+    expect(thermostat.checkTemp()).toEqual(20);
+  })
+})
 });

@@ -51,5 +51,9 @@ Thermostat.prototype = {
 
   isPowerSaveOn: function() {
     return this.powerSave === true;
+  },
+
+  reset: function() {
+    this.currTemp = 20;
   }
 };
