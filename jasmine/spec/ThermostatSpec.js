@@ -33,18 +33,24 @@ describe('Thermostat', function() {
   describe('Power saving mode', function(){
 
     it('has a max temp of 25 when power saving mode is on', function (){
-      for(let i = 0; i < 5; i++) {
+      for(let i = 0; i < 6; i++) {
         thermostat.increaseTemp();
       }
       expect(thermostat.checkTemp()).toEqual(25);
     });
 
     it('has a maximum of 32 when power saving mode is off', function (){
+      thermostat.switchOffPowerSave();
       for(let i = 0; i < 13; i++) {
         thermostat.increaseTemp();
       }
       expect(thermostat.checkTemp()).toEqual(32)
     });
-
+    it('can switch PSM back on', function() {
+      thermostat.switchOffPowerSave();
+      expect(thermostat.isPowerSaveOn()).toBe(false);
+      thermostat.switchOnPowerSave();
+      expect(thermostat.isPowerSaveOn()).toBe(true);
+});
   });
 });
