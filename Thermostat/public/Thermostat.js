@@ -17,11 +17,13 @@ Thermostat.prototype = {
   },
 
   increaseTemp: function() {
+    console.log(this.isMaxTemp())
     if (this.isMaxTemp()) {
       return;
     }
+    else {
     this.currTemp++;
-    console.log(this.currTemp);
+    }
   },
 
   decreaseTemp: function() {
@@ -37,9 +39,9 @@ Thermostat.prototype = {
 
   isMaxTemp: function() {
     if (this.isPowerSaveOn()) {
-      return this.currTemp === this.POWER_SAVE_MAX_TEMP;
+      return this.currTemp >= this.POWER_SAVE_MAX_TEMP;
     }
-    return this.currTemp === this.MAX_TEMP;
+    return this.currTemp >= this.MAX_TEMP;
   },
 
   switchOffPowerSave: function() {

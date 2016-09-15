@@ -20,13 +20,13 @@ $(document).ready(function() {
         var parseData = JSON.parse(data);
         thermostat.currTemp = parseData.temperature;
         thermostat.powerSave = parseData.mode;
+        
         updateDisplay();
       });
   }
 
   function updateDisplay() {
     document.getElementById("displayTemp").innerHTML = thermostat.checkTemp();
-    document.getElementById("powerSave").innerHTML = thermostat.isPowerSaveOn();
     updateEnergy();
     saveWeather();
   }
@@ -49,10 +49,14 @@ $(document).ready(function() {
   });
   $("#powerSaveOn").click(function() {
     thermostat.switchOnPowerSave();
+    $("#powerSaveOff").attr("class","btn btn-default");
+    $("#powerSaveOn").attr("class","btn btn-default-active");
     updateDisplay();
   });
   $("#powerSaveOff").click(function() {
     thermostat.switchOffPowerSave();
+    $("#powerSaveOff").attr("class","btn btn-default-active");
+    $("#powerSaveOn").attr("class","btn btn-default");
     updateDisplay();
   });
 

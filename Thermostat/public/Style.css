@@ -1,5 +1,5 @@
-.low { background-color: green; }
+.low { color: green; font-size: 80px;}
 
-.medium { background-color: yellow; }
+.medium { color: yellow; font-size: 80px; }
 
-.high { background-color: red; }
+.high { color: red; font-size: 80px; }
