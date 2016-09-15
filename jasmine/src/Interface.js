@@ -2,6 +2,14 @@
 
 $(document).ready(function() {
   var thermostat = new Thermostat();
+  function getWeather(city) {
+      var city = city || "London"
+      $.get("http://api.openweathermap.org/data/2.5/weather?q="+city+"&APPID=e064e1033e86a9347cfcc7da69705933&mode=html",function(data){
+      document.getElementById("getWeather").innerHTML = data; })
+  }
+
+  getWeather();
+
   updateDisplay();
   function updateDisplay() {
     document.getElementById("displayTemp").innerHTML = thermostat.checkTemp();
@@ -12,7 +20,6 @@ $(document).ready(function() {
   function updateEnergy() {
     $("#displayTemp").attr("class",thermostat.energyUsage());
   }
-
 
   $("#increase").click(function() {
     thermostat.increaseTemp();
@@ -34,5 +41,12 @@ $(document).ready(function() {
     thermostat.switchOffPowerSave();
     updateDisplay();
   });
+
+  $("#updateCity").click(function() {
+    var city = $("#cityInput").val();
+    getWeather(city);
+  });
+
+
 
 });
