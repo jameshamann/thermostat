@@ -1,20 +1,34 @@
 'use strict';
-
 $(document).ready(function() {
   var thermostat = new Thermostat();
+  reloadWeather();
+  getWeather();
+
   function getWeather(city) {
       var city = city || "London"
       $.get("http://api.openweathermap.org/data/2.5/weather?q="+city+"&APPID=e064e1033e86a9347cfcc7da69705933&mode=html",function(data){
       document.getElementById("getWeather").innerHTML = data; })
   }
 
-  getWeather();
 
-  updateDisplay();
+  function saveWeather() {
+      $.post("http://localhost:9292/thermostat",{appid: 1, temperature: thermostat.checkTemp(), mode: thermostat.isPowerSaveOn()});
+  }
+
+  function reloadWeather() {
+      $.get("http://localhost:9292/thermostat?appid=1", function(data){
+        var parseData = JSON.parse(data);
+        thermostat.currTemp = parseData.temperature;
+        thermostat.powerSave = parseData.mode;
+        updateDisplay();
+      });
+  }
+
   function updateDisplay() {
     document.getElementById("displayTemp").innerHTML = thermostat.checkTemp();
     document.getElementById("powerSave").innerHTML = thermostat.isPowerSaveOn();
     updateEnergy();
+    saveWeather();
   }
 
   function updateEnergy() {
@@ -46,7 +60,4 @@ $(document).ready(function() {
     var city = $("#cityInput").val();
     getWeather(city);
   });
-
-
-
 });
