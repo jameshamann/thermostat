@@ -21,6 +21,7 @@ Thermostat.prototype = {
       return;
     }
     this.currTemp++;
+    console.log(this.currTemp);
   },
 
   decreaseTemp: function() {
