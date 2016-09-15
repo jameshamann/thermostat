@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+   <title>Thermostat</title>
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+   <link href="./public/Style.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+
+<span id="displayTemp" class="medium">
+
+</span>
+
+<div id="powerSave">
+</div>
+
+<div id="getWeather">
+</div>
+
+
+  <input type="text" id="cityInput">
+  <input type="submit" id="updateCity" value="Update!">
+
+  <label for="increase">
+  Increase Temperature <button id="increase" type="button" name="increase"></button>
+  </label>
+
+  <label for="decrease">
+  Decrease Temperature <button id="decrease" type="button" name="decrease"></button>
+</label>
+
+  <label for="reset">
+  Reset <button id="reset" type="button" name="reset"></button>
+</label>
+
+  <label for="powerSaveOn">
+  Power Save On <button id="powerSaveOn" type="button" name="powersaveon"></button>
+</label>
+
+<label for="powerSaveOff">
+Power Save Off <button id="powerSaveOff" type="button" name="powersaveoff"></button>
+</label>
+
+
+<script src="./public/Thermostat.js"></script>
+<script src="./public/Interface.js"></script>
+</body>
+
+</html>
