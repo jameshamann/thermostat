@@ -3,11 +3,16 @@
 $(document).ready(function() {
   var thermostat = new Thermostat();
   updateDisplay();
-
   function updateDisplay() {
     document.getElementById("displayTemp").innerHTML = thermostat.checkTemp();
     document.getElementById("powerSave").innerHTML = thermostat.isPowerSaveOn();
+    updateEnergy();
   }
+
+  function updateEnergy() {
+    $("#displayTemp").attr("class",thermostat.energyUsage());
+  }
+
 
   $("#increase").click(function() {
     thermostat.increaseTemp();
@@ -29,4 +34,5 @@ $(document).ready(function() {
     thermostat.switchOffPowerSave();
     updateDisplay();
   });
+
 });

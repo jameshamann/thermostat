@@ -60,11 +60,11 @@ Thermostat.prototype = {
 
   energyCalculator: function() {
     if (this.checkTemp() <18) {
-      return "green";
+      return "low";
   } else if (this.checkTemp() <25) {
-    return "yellow";
+    return "medium";
   }
-    return "red";
+    return "high";
   },
 
   energyUsage: function() {
